@@ -1,11 +1,25 @@
-Each Xcode build, creates a `.app` **folder**. 
-The application _binary_ is inside that folder something like path/to/build/myCoolApp.app/myCoolApp
-It's common for binaries to not have extensions. `ls`, `strings` are all binaries. You just call them you don't do something like `ls.exe`
-For more on that see [What Files Go Into an Application Bundle?](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/BundleTypes/BundleTypes.html#//apple_ref/doc/uid/10000123i-CH101-SW13)
+To see what dynamic libraries you've added: 
+```
+otool -L path/to/binary
+```
+Example result: 
 
-### An `.ipa` != `.app` file. 
+```ruby
 
-It's a zip file that contains your app and other bits and blobs used for delpoying the app to different places. Like this: 
-<img width="804" alt="Screen Shot 2021-10-19 at 12 40 59 PM" src="https://user-images.githubusercontent.com/12160198/137954902-5e809d99-4460-47ac-97db-e4cdf8824a05.png">
+/usr/lib/libicucore.A.dylib (compatibility version 1.0.0, current version 68.2.0)
+/usr/lib/libsqlite3.dylib (compatibility version 9.0.0, current version 329.0.0)
+/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.11)
+@rpath/AIQ.framework/AIQ (compatibility version 1.0.0, current version 1.0.0) // FOR EACH POD WE USE...
+@rpath/IoT.framework/IoT (compatibility version 1.0.0, current version 1.0.0)
+/System/Library/Frameworks/CFNetwork.framework/CFNetwork (compatibility version 1.0.0, current version 1312.0.0)
+/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)
+/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1311.0.0)
+/usr/lib/swift/libswiftAVFoundation.dylib (compatibility version 1.0.0, current version 2036.25.1, weak)
+/usr/lib/swift/libswiftAccelerate.dylib (compatibility version 1.0.0, current version 27.0.0, weak)
+/usr/lib/swift/libswiftCallKit.dylib (compatibility version 1.0.0, current version 3.0.0, weak)
 
-You don't create a `.ipa` file unless you're archiving for app store and stuff. Normal runs from Xcode only create the `.app` folder. 
+```
+
+
+- If the framework is bundled inside your signed application binary. you can dynamically load it
+- If the framework is downloaded into ANY folder that invalidates the signature of your app, then you can not dynamically load it. (This enforcement began in iOS 11)
