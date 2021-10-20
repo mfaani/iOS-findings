@@ -23,3 +23,6 @@ Example result:
 
 - If the framework is bundled inside your signed application binary. you can dynamically load it
 - If the framework is downloaded into ANY folder that invalidates the signature of your app, then you can not dynamically load it. (This enforcement began in iOS 11)
+
+## Dynamic Library vs Static Library
+https://www.vadimbulavin.com/static-dynamic-frameworks-and-libraries/
