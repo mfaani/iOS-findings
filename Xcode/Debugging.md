@@ -1,3 +1,4 @@
+# OSLog, Debugging Profiles, APNs
 So we reached out to Apple about Push notifications where the images get downloaded and we're able to store the image successfully. However the image still doesn't show up sometims. 
 They recommendation was to use `OSLog`. Add your own logs around everything and use that as a _marker_ next to other system logs. 
 
