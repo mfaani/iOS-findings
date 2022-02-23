@@ -1,3 +1,5 @@
+http://highscalability.com/blog/2021/12/13/designing-netflix.html
+
 High Scalability
 Home
 Explain The Cloud Like I'm 10
