@@ -1,11 +1,14 @@
 Discussion with **Apple Engineer** during labs 2022: 
 
+Difference of Framework, Dynamic Library and Static library: 
 Framework bundles of chunck of code + series of assets (icons, xibs). Framework assume you're using Dynamic Libraries
 Static Libraries: don't use Framework so you have to manually copy resources instead of embedding
 Framework: are packaged. Static libraries you have manually copy xibs, when you copy one will override i.e. if similar symboles exist, they'll override one another. 
 with Framework, the whole framework will copied into your app bundle + subdirectores. Example you'll have something like:
 Framework1/LB + resources/library.dylib
 Framework2/LB + resources/library.dylib
+
+-----
 
 To see what dynamic libraries you've added: 
 ```
